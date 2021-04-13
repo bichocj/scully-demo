@@ -1,0 +1,21 @@
+<div nz-row style="min-height: 400px; background-color: #fafafa;" [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+  <div nz-col [nzSpan]="10" class="gutter-row left-flex d-flex justify-between">
+    <div class="text-center mt-4">
+      <h3>{{ course.name }} - {{ course.id }}</h3>
+      <div class="d-flex justify-between mx-4">
+        <div>{{ course.description }}</div>
+        <div><nz-rate [ngModel]="2.5" nzAllowHalf></nz-rate></div>
+      </div>
+      <div>
+        avatar: {{course.avatar}}
+      </div>
+      <div>
+        registrationUrl: {{course.registrationUrl}}
+      </div>
+    </div>
+    <div class="text-center mb-4">
+      <button nz-button nzType="primary" nzSize="large" (click)="goToBuyNow()">Buy Now</button>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="14" class="gutter-row preview-video">col-12</div>
+</div>
