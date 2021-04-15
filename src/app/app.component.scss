@@ -32,3 +32,9 @@ nz-layout {
 nz-layout:last-child {
   margin: 0;
 }
+
+.right {
+  position: absolute !important;
+  margin-right: 30px;
+  right: 0;
+}

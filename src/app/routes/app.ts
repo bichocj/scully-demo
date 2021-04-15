@@ -7,6 +7,7 @@ import { CoursesComponent } from '../courses/courses.component';
 import { CourseComponent } from '../course/course.component';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { PricingComponent } from '../pricing/pricing.component';
+import { LoginComponent } from '../login/login.component';
 const routes: Routes = [
   {
     path: '',
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'course/:id',
     component: CourseComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
 

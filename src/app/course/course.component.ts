@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { API_BASE_URL } from '../constants';
+import { AppState } from './../services/shared.service';
 
 
 @Component({
@@ -20,14 +21,19 @@ export class CourseComponent implements OnInit {
     registrationUrl: '',
   };
   isVisible = false;
-
+  profile = null;
   private apiUrl = `${API_BASE_URL}/courses`;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient
-      ) {}
+    private http: HttpClient,
+    private appState: AppState
+      ) {
+        this.appState.profile$.subscribe((val: any) => {
+            this.profile = val;
+          });
+      }
 
 
   ngOnInit(): void {
@@ -40,7 +46,11 @@ export class CourseComponent implements OnInit {
   }
 
   showModal(): void {
-    this.isVisible = true;
+    if (this.profile){
+      this.isVisible = true;
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   handleOk(): void {
