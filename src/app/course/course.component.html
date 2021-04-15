@@ -13,8 +13,15 @@
         registrationUrl: {{course.registrationUrl}}
       </div>
     </div>
-    <div class="text-center mb-4">
-      <button nz-button nzType="primary" nzSize="large" (click)="goToBuyNow()">Buy Now</button>
+    <div class="text-center mb-4">      
+      <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Open Modal / redirect to login page</span></button>
+      <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+          <p>Content one</p>
+          <p>Content two</p>
+          <p>Content three</p>
+        </ng-container>
+      </nz-modal>
     </div>
   </div>
   <div nz-col [nzSpan]="14" class="gutter-row preview-video">col-12</div>

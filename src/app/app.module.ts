@@ -26,6 +26,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseComponent } from './course/course.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { LoginComponent } from './login/login.component';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 
 registerLocaleData(en);
 
@@ -47,10 +49,11 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     BrowserAnimationsModule,
     ScrollingModule,
     DragDropModule,
+    ScullyLibModule,
 
   ],
-  declarations: [ NzDemoLayoutTopComponent, CoursesComponent, WelcomeComponent, PricingComponent, CourseComponent ],
-  entryComponents: [ CoursesComponent, WelcomeComponent, PricingComponent, CourseComponent ],
+  declarations: [ NzDemoLayoutTopComponent, CoursesComponent, WelcomeComponent, PricingComponent, CourseComponent, LoginComponent ],
+  entryComponents: [ CoursesComponent, WelcomeComponent, PricingComponent, CourseComponent, LoginComponent ],
   bootstrap: [ NzDemoLayoutTopComponent ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/'},

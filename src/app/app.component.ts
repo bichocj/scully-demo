@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppState } from './services/shared.service';
 
 @Component({
   selector: 'nz-demo-layout-top',
@@ -12,6 +13,14 @@ import { Component } from '@angular/core';
           <li nz-menu-item routerLink='courses'>Courses</li>
           <li nz-menu-item routerLink='pricing'>Pricing</li>
           <li nz-menu-item>Resources</li>
+          <ng-template [ngIf]="isLoggedIn" [ngIfElse]="loggedOut">
+            <li (click)="logout()" nz-menu-item style="position: absolute; right: 0; margin-right: 50px">
+              {{profile}}, Salir
+            </li>
+          </ng-template>
+          <ng-template #loggedOut>
+            <li nz-menu-item routerLink='login' style="position: absolute; right: 0; margin-right: 50px">Login</li>
+          </ng-template>
         </ul>
       </nz-header>
       <nz-content>
@@ -60,4 +69,19 @@ import { Component } from '@angular/core';
     `
   ]
 })
-export class NzDemoLayoutTopComponent {}
+export class NzDemoLayoutTopComponent {
+  profile = null;
+  isLoggedIn = false;
+  constructor(private appState: AppState) {
+    this.appState.profile$.subscribe((val: any) => {
+      this.profile = val;
+      if (val) {
+        this.isLoggedIn = true;
+      }
+    });
+  }
+  logout(): void {
+    this.appState.setProfile(null);
+    this.isLoggedIn = false;
+  }
+}
