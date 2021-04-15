@@ -25,7 +25,6 @@ const routes: Routes = [
   },
   {
     path: 'course/:id',
-    // pathMatch: 'full',
     component: CourseComponent,
   },
 ];

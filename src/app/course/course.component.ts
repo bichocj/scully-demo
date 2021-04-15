@@ -19,6 +19,8 @@ export class CourseComponent implements OnInit {
     avatar: '',
     registrationUrl: '',
   };
+  isVisible = false;
+
   private apiUrl = `${API_BASE_URL}/courses`;
 
   constructor(
@@ -35,6 +37,20 @@ export class CourseComponent implements OnInit {
 
   public getCourse(id): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
   }
 
   public goToBuyNow(): void {
